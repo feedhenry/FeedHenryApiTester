@@ -1,0 +1,501 @@
+      <link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title" charset="utf-8">
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="scripts/contacts.js"></script>
+<script type="text/javascript" src="scripts/log.js"></script>
+<script type="text/javascript" src="scripts/data.js"></script>
+<script type="text/javascript" src="scripts/geo.js"></script>
+<script type="text/javascript" src="scripts/accel.js"></script>
+<script type="text/javascript" src="scripts/notify.js"></script>
+<script type="text/javascript" src="scripts/camera.js"></script>
+<script type="text/javascript" src="scripts/email.js"></script>
+<script type="text/javascript" src="scripts/orientation.js"></script>
+<script type="text/javascript" src="scripts/map.js"></script>
+<script type="text/javascript" src="scripts/audio.js"></script>
+<script type="text/javascript" src="scripts/webview.js"></script>
+<script type="text/javascript" src="scripts/files.js"></script>
+<script type="text/javascript" src="scripts/push.js"></script>
+<script type="text/javascript" src="scripts/externalstorage.js"></script>
+
+<div id="body">
+  <div class="topBar">
+    <span class="back_button" style='display:none'>Back</span>
+    <span class="pageTitle">Device API Tester</span>  
+  </div>
+  
+  <a href="#contact" class="nav_item">
+  <div class="item">
+  <h2>Contacts</h2>
+  </div>
+  </a>
+  
+  <a href="#log" class="nav_item">
+  <div class="item">
+  <h2>Log Message</h2>
+  </div>
+  </a>
+
+  <a href="#externalstorage" class="nav_item">
+      <div class="item">
+          <h2>External Data Storage</h2>
+      </div>
+  </a>
+
+  <a href="#storage" class="nav_item">
+  <div class="item">
+  <h2>Data Storage</h2>
+  </div>
+  </a>
+  
+  <a href="#geolocation" class="nav_item">
+  <div class="item">
+  <h2>Geolocation</h2>
+  </div>
+  </a>
+  
+  
+  <a href="#accelerometer" class="nav_item">
+    <div class="item">
+      <h2>Accelerometer</h2>
+    </div>
+  </a>
+  
+  <a href="#notify" class="nav_item">
+    <div class="item">
+      <h2>Notify</h2>
+    </div>
+  </a>
+  
+  <a href="#cam" class="nav_item">
+    <div class="item">
+      <h2>Photos</h2>
+    </div>
+  </a>
+  
+  <a href="#send" class="nav_item">
+    <div class="item">
+      <h2>Send...</h2>
+    </div>
+  </a>
+  
+  <a href="#orientation" class="nav_item">
+    <div class="item">
+      <h2>Orientation</h2>
+    </div>
+  </a>
+  
+  <a href="#maps" class="nav_item">
+    <div class="item">
+      <h2>Show Map</h2>
+    </div>
+  </a>
+  
+  <a href="#audio" class="nav_item">
+    <div class="item">
+      <h2>Audio</h2>
+    </div>
+  </a>
+
+  <a href="#webview" class="nav_item">
+    <div class="item">
+      <h2>WebView</h2>
+    </div>
+  </a>
+    
+    <a href="#files" class="nav_item">
+        <div class="item">
+            <h2>Files</h2>
+        </div>
+    </a>
+
+    <a href="#push" class="nav_item">
+        <div class="item">
+            <h2>Push Notification</h2>
+        </div>
+    </a>
+
+    <div id="contact" class="main_view">
+      <a href="#" onclick="newContact();">
+      <div class="item">
+        <h2>Create a new Contact (without GUI)</h2>
+      </div>
+      </a>
+
+      <a href="#" onclick="newContactGui();">
+      <div class="item">
+        <h2>Create a new Contact (with GUI)</h2>
+      </div>
+      </a>
+
+      <a href="#" onclick="chooseContact();">
+      <div class="item">
+        <h2>Choose Contacts (with GUI)</h2>
+      </div>
+      </a>
+    
+      <a href="#" onclick="listAllContacts();">
+      <div class="item">
+      <h2>List all contacts</h2>
+      </div>
+      </a>
+    
+      <div id="newContact" style="display:none" class="contact_subview">
+        <p class="input_item">
+          <label for="contact_firstname">First Name</label>
+          <input type="text" id="contact_firstname"></input>
+        </p>
+        <p class="input_item">
+          <label for="contact_lastname">Last Name</label>
+          <input type="text" id="contact_lastname"></input>
+        </p>
+        <p class="input_item">
+          <label for="contact_phone">Phone Number</label>
+          <input type="text" id="contact_phone"></input>
+        </p>
+        <p style="clear:both">
+          <input type="button" value="Create Contact" id="create_contact_btn"></input>
+        </p>
+      </div>
+  
+      <div id="existingContacts" style="display:none" class="contact_subview">
+      <div id="contactDetail"></div>
+      <div id="contactList"></div>
+      </div>
+    </div>
+    
+    <div id="log" class="main_view">
+      <p> You need to use Organizer in the Xcode to read the console log.</p>
+      <p class="input_item">
+        <label for="message_to_log">Enter Message</label>
+        <input type="text" id="message_to_log"></input>
+      </p>
+      <p style="clear:both">
+        <input type="button" value="Log it!" id="log_message_btn" onclick="logMessage();"></input>
+      </p>
+    </div>
+    
+    <div id="storage" class="main_view">
+      <a href="#" onclick="createNewRecord();">
+      <div class="item">
+        <h2>Create a new record</h2>
+      </div>
+      </a>
+    
+      <a href="#" onclick="getRecord();">
+      <div class="item">
+      <h2>Get an existing record</h2>
+      </div>
+      </a>
+      
+      <div id="new_record" class="data_subview" style="display:none">
+        <p class="input_item">
+          <label for="new_record_key">Key</label>
+          <input type="text" id="new_record_key"></input>
+        </p>
+        <p class="input_item">
+          <label for="new_record_value">Value</label>
+          <input type="text" id="new_record_value"></input>
+        </p>
+        <p style="clear:both">
+          <input type="button" value="Create Record" id="create_record_btn"></input>
+        </p>
+      </div>
+      
+      <div id="read_record" class="data_subview" style="display:none">
+        <p class="input_item">
+          <label for="read_record_key">Key</label>
+          <input type="text" id="read_record_key"></input>
+        </p>
+        <p style="clear:both">
+          <input type="button" value="Read Record" id="read_record_btn"></input>
+        </p>
+      </div>
+</div>
+
+  <div id="externalstorage" class="main_view">
+      <a href="#" onclick="getExternalStorage();">
+          <div class="item">
+              <h2>Ext Storage Path</h2>
+          </div>
+      </a><br/>
+      <input type="text" placeholder="path" name="externalstorage" />
+
+  </div>
+  
+  <div id="geolocation" class="main_view">
+       <a href="#" onclick="getCurrentLocation();">
+         <div class="item">
+           <h2>Get Current Location</h2>
+         </div>
+        </a>
+      
+      <a href="#" onclick="watchLocation();">
+          <div class="item">
+              <h2>Watch Location</h2>
+          </div>
+      </a>
+      
+      <a href="#" onclick="stopWatchLocation();">
+          <div class="item">
+              <h2>Stop Watching Location</h2>
+          </div>
+      </a>
+       
+       <p class="wait_message"> Get current location, please wait ...</p>
+       <div id="geo_result" class="result"></div>
+     </div>
+
+     <div id="accelerometer" class="main_view">
+       <a href="#" onclick="getCurrentAccel();">
+         <div class="item">
+           <h2>Get Current Accelerometer Data</h2>
+         </div>
+        </a>
+         
+         <a href="#" onclick="watchAccel();">
+             <div class="item">
+                 <h2>Watch Accelerometer Data</h2>
+             </div>
+         </a>
+         
+         <a href="#" onclick="stopWatchAccel();">
+             <div class="item">
+                 <h2>Stop Watching Accelerometer Data</h2>
+             </div>
+         </a>
+       
+       <p class="wait_message"> Get current accelerometer data, please wait ...</p>
+       <div id="accel_result" class="result"></div>
+     </div>
+     
+     <div id="notify" class="main_view">
+       <a href="#" onclick="notify(0)">
+         <div class="item">
+           <h2>Vibrate</h2>
+         </div>
+        </a>
+       
+        <a href="#" onclick="notify(1)">
+         <div class="item">
+           <h2>Beep</h2>
+         </div>
+        </a>
+       
+        <a href="#" onclick="notify(2)">
+         <div class="item">
+           <h2>Blink</h2>
+         </div>
+        </a>
+     </div>
+     
+     <div id="cam" class="main_view">
+       <a href="#" onclick="getCamera(0, false)">
+         <div class="item">
+           <h2>Use Camera</h2>
+         </div>
+        </a>
+       
+       <a href="#" onclick="getCamera(1, false)">
+         <div class="item">
+           <h2>Use Photo Gallery</h2>
+         </div>
+        </a>
+         
+         <a href="#" onclick="getCamera(0, true)">
+             <div class="item">
+                 <h2>Use Camera URL</h2>
+             </div>
+         </a>
+         
+         <a href="#" onclick="getCamera(1, true)">
+             <div class="item">
+                 <h2>Use Photo Gallery URL</h2>
+             </div>
+         </a>
+       
+       <div id="cam_result" class="result"></div>
+     </div>
+
+     <div id="send" class="main_view">
+       <a href="#" onclick="send(0)">
+         <div class="item">
+           <h2>Send An Email</h2>
+         </div>
+        </a>
+       
+       <a href="#" onclick="send(1)">
+         <div class="item">
+           <h2>Send A SMS</h2>
+         </div>
+        </a>
+
+        
+       <div id="email_content" class="data_subview" style="display:none">
+         <p class="input_item">
+           <label for="email_to">To:</label>
+           <input type="text" id="email_to"></input>
+         </p>
+         <p class="input_item">
+           <label for="email_cc">Cc:</label>
+           <input type="text" id="email_cc"></input>
+         </p>
+         <p class="input_item">
+           <label for="email_sub">Subject:</label>
+           <input type="text" id="email_sub"></input>
+         </p>
+         <p class="input_item">
+           <label for="email_body">Body:</label>
+           <textarea type="text" rows="5" cols="20" id="email_body"></textarea>
+         </p>
+         <p style="clear:both">
+          <input type="button" value="Send" id="send_email_btn"></input>
+        </p>
+       </div>
+       
+       <div id="sms_content" class="data_subview" style="display:none">
+        <p class="input_item">
+           <label for="sms_to">To:</label>
+           <input type="text" id="sms_to"></input>
+         </p>
+         <p class="input_item">
+           <label for="sms_content_field">Text:</label>
+           <input type="text" id="sms_content_field"></input>
+         </p>
+         <p class="input_item">
+           <label for="sms_bg_field">Background:</label>
+           <input type="checkbox" id="sms_bg_field"></input>
+         </p>
+         <p style="clear:both">
+          <input type="button" value="Send" id="send_sms_btn"></input>
+        </p>
+       </div>
+       
+     </div>
+  
+     <div id="orientation" class="main_view">
+         <a href="#" onclick="setOrientation('p')">
+             <div class="item">
+                 <h2>Set to Portrait</h2>
+             </div>
+         </a>
+         <a href="#" onclick="setOrientation('l')">
+             <div class="item">
+                 <h2>Set to Landscape</h2>
+             </div>
+         </a>
+       <p>Rotate device to see orientation changes</p>
+       <p id="current_orientation"></p>
+     </div>
+  
+     <div id="maps" class="main_view">
+       <a href="#" onclick="showCurrentLocationInMap()">
+         <div class="item">
+           <h2>Show Map With Current Location</h2>
+         </div>
+        </a>
+       <div id="maps_div"></div>
+     </div>
+  
+    <div id="audio" class="main_view">
+       <p> Note: Rte radio is using rtsp protocal and it is blocked by WIT. Use Safari to listen to the radio in the Web browser</p>
+      
+        <a href="#" onclick="playAudioStream('play', 'tipp')">
+         <div class="item">
+           <h2>Play Tipp Radio </h2>
+         </div>
+        </a>
+      
+        <a href="#" onclick="playAudioStream('play', 'rte')">
+         <div class="item">
+           <h2>Play RTE Radio (Android only)</h2>
+         </div>
+        </a>
+      
+        <a href="#" onclick="playAudioStream('pause')">
+         <div class="item">
+           <h2>Pause Audio Stream</h2>
+         </div>
+        </a>
+      
+        <a href="#" onclick="playAudioStream('stop')">
+         <div class="item">
+           <h2>Stop Audio Stream</h2>
+         </div>
+        </a>
+      
+        <a href="#" onclick="changeVol('up')">
+         <div class="item">
+           <h2>Turn Up Volume (Android Only)</h2>
+         </div>
+        </a>
+      
+        <a href="#" onclick="changeVol('down')">
+         <div class="item">
+           <h2>Turn Down Volume (Android Only)</h2>
+         </div>
+        </a>
+    </div>
+  
+    <div id="webview" class="main_view">
+      <a href="#" onclick="openWebview('google')">
+         <div class="item">
+           <h2>Open Google</h2>
+         </div>
+      </a>
+      
+      <a href="#" onclick="openWebview('wit')">
+         <div class="item">
+           <h2>Open WIT</h2>
+         </div>
+      </a>
+    </div>  
+    <div id="files" class="main_view">
+        <a href="#" onclick="uploadFile()">
+            <div class="item">
+                <h2>Upload File</h2>
+            </div>
+        </a>
+        <a href="#" onclick="downloadFile()">
+            <div class="item">
+                <h2>Download File</h2>
+            </div>
+        </a>
+        <a href="#" onclick="ftpListFiles()">
+            <div class="item">
+                <h2>Ftp List</h2>
+            </div>
+        </a>
+        
+        <div id="file_params" class="data_subview" style="display:none">
+            <p class="input_item">
+            <label id="file_url_lable" for="file_url"></label>
+            <input type="text" id="file_url"></input>
+            </p>
+            <p style="clear:both">
+            <input type="button" value="Start" id="file_start_btn"></input>
+            </p>
+        </div>
+        
+        <div id="list_result" class="data_subview" style="display:none">
+         
+        </div>
+        
+    </div>
+ 
+    <div id="push" class="main_view">
+        <a href="#" onclick="registerAPN()">
+            <div class="item">
+                <h2>Register For Push Noficiation</h2>
+            </div>
+        </a>
+        <div id="push_result" class="data_subview" style="display:none">
+            
+        </div>
+
+    </div>  
+
+</div>
+
+     
+
+    </div>
+  
