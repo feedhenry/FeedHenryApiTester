@@ -15,12 +15,12 @@ function send(type){
     $('#sms_content').show();
     $('#sms_content .input_item').show();
      $('#send_sms_btn').unbind().click(function(e){
-    	 var body = $('#sms_content_field').val();
-    	 var doBg = $('#sms_bg_field').attr("checked");
-        $fh.send({type:types[type], to:$('#sms_to').val(), body: body, background: doBg}, function(){
-        	alert("Message sent");
+       var body = $('#sms_content_field').val();
+       var doBg = $('#sms_bg_field').attr("checked");
+       $fh.send({type:types[type], to:$('#sms_to').val(), subject:'subj1', body: body, background: doBg}, function(){
+          alert("Message sent");
         }, function(err){
-        	alert("Error sending sms : " + err);
+          alert("Error sending sms : " + err);
         });
         $('#sms_content').hide();
      })
