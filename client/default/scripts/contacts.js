@@ -4,12 +4,13 @@ var detailedContactTemplate = "<div class='item' onclick='onContactClick(CONTACT
 function listAllContacts() {
   $('.contact_subview').hide();
   //$fhclient.contacts.list(onGetAllContacts, {});
-  $fh.contacts({act:'list'}, onGetAllContacts, function(){
-  
+  $fh.contacts({act:'list'}, onGetAllContacts, function(msg){
+    alert("failed: " + msg);
   });
 }
 
 function onGetAllContacts(res) {
+  alert("onGetAllContacts" + JSON.stringify(res));
   var listMarkup = "";
   res = res.list;
   for (var n = 0; n < res.length; n++) {
