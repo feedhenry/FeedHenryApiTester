@@ -1,5 +1,7 @@
+alert("load main.js")
 $(document).ready(function(){
-  $('body').addClass("theme");
+
+                  $('body').addClass("theme");
   $('.nav_item').each(function() {
     $(this).bind('click', function(e){
       var mainTitle = $('.pageTitle').text();
@@ -16,21 +18,5 @@ $(document).ready(function(){
       $('.main_view, .nav_item').hide();
       $(targetId).show();
     })
-  });
-})
-
-var backBtnCount = 0;
-$fh.ready(function(){
-  $fh.env(function(props){
-    console.log("device properties: " + JSON.stringify(props));
-  });
-  $fh.handlers({type:'back'}, function(){
-      if(backBtnCount < 1){
-        alert("Backbutton Override!! Press again to exit!!");
-        backBtnCount++;
-        return false;
-      } else {
-    	return true;
-      }
-   }); 
+  })
 })

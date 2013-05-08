@@ -1,4 +1,4 @@
-      <link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title" charset="utf-8">
 <script type="text/javascript" src="main.js"></script>
 <script type="text/javascript" src="scripts/contacts.js"></script>
 <script type="text/javascript" src="scripts/log.js"></script>
@@ -12,9 +12,8 @@
 <script type="text/javascript" src="scripts/map.js"></script>
 <script type="text/javascript" src="scripts/audio.js"></script>
 <script type="text/javascript" src="scripts/webview.js"></script>
-<script type="text/javascript" src="scripts/files.js"></script>
-<script type="text/javascript" src="scripts/push.js"></script>
-<script type="text/javascript" src="scripts/externalstorage.js"></script>
+    <script type="text/javascript" src="scripts/files.js"></script>
+    <script type="text/javascript" src="scripts/push.js"></script>
 
 <div id="body">
   <div class="topBar">
@@ -33,13 +32,8 @@
   <h2>Log Message</h2>
   </div>
   </a>
-
-  <a href="#externalstorage" class="nav_item">
-      <div class="item">
-          <h2>External Data Storage</h2>
-      </div>
-  </a>
-
+  
+  
   <a href="#storage" class="nav_item">
   <div class="item">
   <h2>Data Storage</h2>
@@ -210,16 +204,6 @@
         </p>
       </div>
 </div>
-
-  <div id="externalstorage" class="main_view">
-      <a href="#" onclick="getExternalStorage();">
-          <div class="item">
-              <h2>Ext Storage Path</h2>
-          </div>
-      </a><br/>
-      <input type="text" placeholder="path" name="externalstorage" />
-
-  </div>
   
   <div id="geolocation" class="main_view">
        <a href="#" onclick="getCurrentLocation();">
@@ -328,7 +312,9 @@
          </div>
         </a>
 
-        
+      <div id="send_result" class="data_subview" style="display:none">
+        <p></p>
+      </div>
        <div id="email_content" class="data_subview" style="display:none">
          <p class="input_item">
            <label for="email_to">To:</label>
@@ -346,6 +332,10 @@
            <label for="email_body">Body:</label>
            <textarea type="text" rows="5" cols="20" id="email_body"></textarea>
          </p>
+         <p class="input_item">
+           <label for="email_attach">Attachments:</label>
+          <button id="email_attach">Choose Photo</button>
+         </p>
          <p style="clear:both">
           <input type="button" value="Send" id="send_email_btn"></input>
         </p>
@@ -357,12 +347,8 @@
            <input type="text" id="sms_to"></input>
          </p>
          <p class="input_item">
-           <label for="sms_content_field">Text:</label>
-           <input type="text" id="sms_content_field"></input>
-         </p>
-         <p class="input_item">
-           <label for="sms_bg_field">Background:</label>
-           <input type="checkbox" id="sms_bg_field"></input>
+         <label for="sms_body">Body:</label>
+         <textarea type="text" rows="5" cols="20" id="sms_body"></textarea>
          </p>
          <p style="clear:both">
           <input type="button" value="Send" id="send_sms_btn"></input>
@@ -464,7 +450,12 @@
                 <h2>Ftp List</h2>
             </div>
         </a>
-        
+      <a href="#" onclick="openLink()">
+        <div class="item">
+          <h2>Open Link In Safari</h2>
+        </div>
+      </a>
+      
         <div id="file_params" class="data_subview" style="display:none">
             <p class="input_item">
             <label id="file_url_lable" for="file_url"></label>

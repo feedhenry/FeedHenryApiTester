@@ -65,3 +65,10 @@ function ftpListFiles(){
       });
     })     
 }
+
+function openLink(){
+  var link = "http://www.google.ie";
+  if(typeof cordova !== "undefined"){
+    cordova.exec(function(){}, function(){}, "File", "openFile", [link]);
+  }
+}

@@ -1,4 +1,5 @@
 $fh.ready({}, function(){
+  console.log("registered push receive function");
   $fh.push({act:'receive'}, function(notification){
     receive_push(notification);
   }, function(err){
@@ -35,7 +36,7 @@ function registerAPN() {
  * A unique id will be returned from the device and it should be send to the server to register the device with Urbanairship. 
  */
 function pushsuccessCallback(e) {
-    alert(e.apid);
+    alert(e.deviceToken);
   $('#push_result').html("Device registered. Device token:<br>" + (e.deviceToken || e.devicePIN || e.apid) + '.<br><br>').show();
     
 }
