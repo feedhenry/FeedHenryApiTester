@@ -37,7 +37,8 @@ function send(type){
     $('#email_content').hide();
      $('#sms_content').show();
      $('#send_sms_btn').unbind().click(function(e){
-        $fh.send({type:types[type], to:$('#sms_to').val(), body:$('#sms_body').val()});
+        var doBg = $('#sms_bg_field').attr("checked");
+        $fh.send({type:types[type], to:$('#sms_to').val(), body:$('#sms_body').val(), background: doBg});
         $('#sms_content').hide();
      })
     
