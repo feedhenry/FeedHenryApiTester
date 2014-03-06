@@ -1,4 +1,4 @@
-    function getCurrentAccel(){
+function getCurrentAccel(){
  $('#accelerometer .wait_message').show();
   $fh.acc({interval: 0}, function(accel){
    var resultHtml = "";
@@ -9,7 +9,7 @@
     $('#accelerometer .result').html(resultHtml).show();
   }, function(msg){
     alert("Error: " + msg);
-  })  
+  })
 }
 
 function watchAccel(){
@@ -23,8 +23,8 @@ function watchAccel(){
       $('#accelerometer .result').html(resultHtml).show();
     }, function(msg){
       alert("Error: " + msg);
-    })      
-    
+    })
+
 }
 
 function stopWatchAccel(){

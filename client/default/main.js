@@ -1,7 +1,6 @@
-alert("load main.js")
 $(document).ready(function(){
 
-                  $('body').addClass("theme");
+  $('body').addClass("theme");
   $('.nav_item').each(function() {
     $(this).bind('click', function(e){
       var mainTitle = $('.pageTitle').text();
@@ -17,6 +16,6 @@ $(document).ready(function(){
       });
       $('.main_view, .nav_item').hide();
       $(targetId).show();
-    })
-  })
-})
+    });
+  });
+});

@@ -1,23 +1,22 @@
-      function playAudioStream(act, station){
+function playAudioStream(act, station){
   var station_map = {
-    'tipp':'http://streaming.totalbroadcast.net:8018',
-    'rte': 'rtsp://wmsv1.rte.ie/live/radio1'
+    'tipp':'http://streaming.totalbroadcast.net:8018'
   }
-      
+
   var path;
   if(act == "play"){
    path = station_map[station];
    $fh.audio({act:'play', path: path}, function(){
-     alert('Audio played'); 
+     alert('Audio played');
    }, function(){
       alert('Error');
-   }) 
+   })
   } else if(act == 'pause') {
       $fh.audio({act:'pause'}, function(){
         alert('Audio paused');
       }, function(){
         alert('Pause failed');
-      })    
+      })
   } else if(act == 'stop'){
       $fh.audio({act:'stop'}, function(){
        alert('audio stopped');
@@ -26,8 +25,8 @@
     })
   }
 }
-      
-function changeVol(dir){
+
+/*function changeVol(dir){
       $fh.audio({act:'getvolume'}, function(vol_value){
         var current_vol =  parseFloat(vol_value);
         alert("current volume:" + vol_value);
@@ -49,4 +48,4 @@ function changeVol(dir){
       }, function(){
         alert("Error get current volume");
       })
-}
+}*/

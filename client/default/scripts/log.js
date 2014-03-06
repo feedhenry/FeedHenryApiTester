@@ -1,4 +1,4 @@
-   function logMessage(){
+function logMessage(){
  var message = $('#message_to_log').val();
  if(message == ""){
   alert("PLease enter a message!");
@@ -8,4 +8,3 @@
  $fh.log({message:message});
   alert("Message logged. Please check the log file");
 }
-
